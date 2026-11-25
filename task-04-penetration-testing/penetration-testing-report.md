@@ -1,93 +1,111 @@
-**Penetration Testing Report**
+
+# Web Application Penetration Testing Report
 
 **Commonwealth Bank Cybersecurity Virtual Experience**
 
-**Task: 04 – Penetration Testing**
+| Project Detail | Description |
+|---|---|
+| Task | Task 04 – Penetration Testing |
+| Training Platform | PortSwigger Web Security Academy |
+| Assessment Type | Beginner-Level Web Application Security Testing |
+| Labs Completed | 11 |
+| Testing Environment | Authorised Educational Training Environment |
 
-**Testing Platform: PortSwigger Web Security Academy**
+---
 
-**Assessment Type: Beginner-Level Web Application Security Testing**
+## 1. Executive Summary
 
-**1. Executive Summary**
+This report documents a web application security testing exercise completed using **PortSwigger Web Security Academy** as part of the Commonwealth Bank Cybersecurity Virtual Experience.
 
-This report documents a penetration testing training exercise conducted using PortSwigger Web Security Academy.
+The objective was to develop practical knowledge of common web application vulnerabilities, understand how they can affect application security, and identify appropriate mitigation strategies.
 
-The objective of this exercise is to identify and understand common web application vulnerabilities within a safe, legal, and controlled training environment.
+The exercise covered 11 beginner-level security labs involving:
 
-The assessment covers 11 beginner-level web security labs across several vulnerability categories, including SQL injection, cross-site scripting, access control weaknesses, authentication vulnerabilities, path traversal, and OS command injection.
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Broken Access Control
+- Authentication Weaknesses
+- Username Enumeration
+- Two-Factor Authentication Bypass
+- File Path Traversal
+- OS Command Injection
 
-These vulnerabilities represent common security weaknesses that can affect real-world web applications when user input, authentication, authorisation, and server-side functionality are not implemented securely.
+The exercises demonstrated how weaknesses in input handling, authentication, authorisation, and server-side functionality can potentially expose applications to unauthorised access, sensitive information disclosure, and unintended application behaviour.
 
-The findings demonstrate how security weaknesses may allow unauthorised access, exposure of sensitive information, manipulation of application behaviour, or execution of unintended actions.
+Recommendations are provided to explain how organisations can prevent or reduce the impact of these vulnerabilities.
 
-Recommendations are included to explain how organisations can reduce the likelihood and impact of similar vulnerabilities.
+**Assessment Limitation:** This was an educational exercise conducted within PortSwigger Web Security Academy. It was not a penetration test of Commonwealth Bank's production systems.
 
-**2. Overview of the Web Application Tested**
+---
 
-PortSwigger Web Security Academy is an online learning platform that provides free educational resources and practical web security labs.
+## 2. Overview of the Testing Environment
 
-The platform allows learners to understand common web application vulnerabilities and practise identifying them within authorised training environments.
+PortSwigger Web Security Academy is an educational platform that provides practical web application security training through controlled vulnerability labs.
 
-For this assessment, 11 beginner-level labs were selected to explore different categories of web application security weaknesses.
+The platform enables learners to understand common security weaknesses, explore their potential impact, and study appropriate prevention techniques.
 
-The purpose of the exercise is to understand the vulnerabilities, their potential impact, and the security controls that can prevent them.
+For this assessment, 11 beginner-level labs were completed across several web application vulnerability categories.
 
-**3. Scope of Testing**
+The purpose was to develop practical penetration testing knowledge and understand how similar vulnerabilities can be identified and prevented in real-world applications.
 
-The scope of this assessment is limited to the selected PortSwigger Web Security Academy training labs.
+---
 
-All testing activities must remain within the authorised training environment.
+## 3. Scope of Testing
 
-Vulnerabilities included in scope
-SQL Injection
-Reflected Cross-Site Scripting
-Stored Cross-Site Scripting
-DOM-Based Cross-Site Scripting
-Access Control Vulnerabilities
-Authentication Vulnerabilities
-Username Enumeration
-Two-Factor Authentication Weaknesses
-Path Traversal
-OS Command Injection
-Out of scope
-Real-world banking systems.
-Third-party websites and applications.
-Systems outside the authorised training environment.
-Unauthorised access to external networks or accounts.
+Testing was restricted to the selected PortSwigger Web Security Academy labs.
 
-**4. Vulnerability Findings and Recommendations**
+### 3.1 In-Scope Vulnerabilities
 
-The following sections document the 11 vulnerability areas selected for this exercise.
+1. SQL Injection – Login Bypass
+2. SQL Injection – Hidden Data Exposure
+3. Reflected Cross-Site Scripting
+4. Stored Cross-Site Scripting
+5. DOM-Based Cross-Site Scripting
+6. Unprotected Administrative Functionality
+7. Hidden Administrative Functionality
+8. Username Enumeration
+9. Two-Factor Authentication Bypass
+10. File Path Traversal
+11. OS Command Injection
 
-Important: Findings should be updated to reflect the actual results and evidence from each completed lab.
+### 3.2 Out of Scope
 
-**Lab 1: SQL Injection – Login Bypass**
+- Real-world banking systems.
+- Third-party websites and applications.
+- External networks and systems.
+- Any application outside the authorised training environment.
 
-**Vulnerability: SQL Injection**
+---
+
+## 4. Vulnerability Findings and Recommendations
+
+### Finding 1: SQL Injection – Login Bypass
+
+**Vulnerability:** SQL Injection
 
 **Description:**
 
 SQL injection occurs when an application incorporates untrusted user input into database queries without appropriate safeguards.
 
-In a login function, this weakness may allow an attacker to manipulate authentication-related database queries.
+In authentication functionality, this weakness may allow an attacker to manipulate database queries and interfere with normal login processes.
 
 **Potential Impact:**
 
-Unauthorised account access.
-Authentication bypass.
-Exposure of sensitive information.
+- Unauthorised account access.
+- Authentication bypass.
+- Exposure of sensitive information.
 
 **Recommendations:**
 
-Use parameterised queries and prepared statements.
-Avoid constructing SQL queries directly from user input.
-Apply appropriate server-side input validation.
-Use database accounts with limited privileges.
-Monitor suspicious authentication activity.
+- Implement parameterised queries and prepared statements.
+- Avoid constructing SQL queries directly from user input.
+- Apply server-side input validation.
+- Restrict database account privileges.
+- Monitor unusual authentication activity.
 
-**Lab 2: SQL Injection – Hidden Data Exposure**
+### Finding 2: SQL Injection – Hidden Data Exposure
 
-**Vulnerability: SQL Injection**
+**Vulnerability:** SQL Injection
 
 **Description:**
 
@@ -95,21 +113,21 @@ Applications that process user-controlled input in database queries without prop
 
 **Potential Impact:**
 
-Unauthorised access to database records.
-Exposure of confidential information.
-Compromise of data confidentiality.
+- Unauthorised access to database records.
+- Exposure of confidential information.
+- Compromise of data confidentiality.
 
 **Recommendations:**
 
-Implement prepared statements.
-Apply server-side input validation.
-Restrict database account privileges.
-Use secure error handling.
-Conduct regular database security reviews.
+- Use prepared statements.
+- Apply server-side input validation.
+- Restrict database account privileges.
+- Implement secure error handling.
+- Conduct regular database security reviews.
 
-**Lab 3: Reflected Cross-Site Scripting**
+### Finding 3: Reflected Cross-Site Scripting
 
-**Vulnerability: Reflected XSS**
+**Vulnerability:** Reflected XSS
 
 **Description:**
 
@@ -119,21 +137,21 @@ This may allow malicious scripts to execute in another user's browser.
 
 **Potential Impact:**
 
-Unauthorised actions within a user's session.
-Exposure of sensitive browser-accessible information.
-Manipulation of webpage content.
+- Unauthorised actions within a user's session.
+- Exposure of browser-accessible information.
+- Manipulation of webpage content.
 
 **Recommendations:**
 
-Apply context-aware output encoding.
-Validate user input.
-Avoid unsafe handling of untrusted content.
-Implement an appropriate Content Security Policy.
-Use secure cookie attributes.
+- Apply context-aware output encoding.
+- Validate user input.
+- Avoid unsafe handling of untrusted content.
+- Implement an appropriate Content Security Policy.
+- Use secure cookie attributes.
 
-**Lab 4: Stored Cross-Site Scripting**
+### Finding 4: Stored Cross-Site Scripting
 
-**Vulnerability: Stored XSS**
+**Vulnerability:** Stored XSS
 
 **Description:**
 
@@ -141,20 +159,21 @@ Stored cross-site scripting occurs when an application saves untrusted user cont
 
 **Potential Impact:**
 
-Malicious script execution in users' browsers.
-Exposure of sensitive information.
-Compromise of user sessions.
+- Malicious script execution in users' browsers.
+- Exposure of sensitive information.
+- Compromise of user sessions.
 
 **Recommendations:**
 
-Apply context-aware output encoding.
-Validate submitted content.
-Sanitise permitted HTML using trusted libraries.
-Use a suitable Content Security Policy.
-Review user-generated content handling.
-Lab 5: DOM-Based Cross-Site Scripting
+- Apply context-aware output encoding.
+- Validate submitted content.
+- Sanitise permitted HTML using trusted libraries.
+- Implement a suitable Content Security Policy.
+- Review user-generated content handling.
 
-**Vulnerability: DOM-Based XSS**
+### Finding 5: DOM-Based Cross-Site Scripting
+
+**Vulnerability:** DOM-Based XSS
 
 **Description:**
 
@@ -164,21 +183,21 @@ This demonstrates that security controls must cover both front-end and back-end 
 
 **Potential Impact:**
 
-Unintended JavaScript execution.
-Manipulation of webpage content.
-Exposure of information accessible to the browser.
+- Unintended JavaScript execution.
+- Manipulation of webpage content.
+- Exposure of information accessible to the browser.
 
 **Recommendations:**
 
-Use safe DOM APIs.
-Avoid unsafe insertion of untrusted data into webpages.
-Apply appropriate output encoding.
-Validate data before processing it.
-Review client-side JavaScript for insecure coding practices.
+- Use safe DOM APIs.
+- Avoid inserting untrusted data into webpages through unsafe methods.
+- Apply appropriate output encoding.
+- Validate data before processing it.
+- Review client-side JavaScript for insecure coding practices.
 
-**Lab 6: Unprotected Admin Functionality**
+### Finding 6: Unprotected Administrative Functionality
 
-**Vulnerability: Broken Access Control**
+**Vulnerability:** Broken Access Control
 
 **Description:**
 
@@ -186,21 +205,21 @@ Administrative functionality may be exposed when an application does not properl
 
 **Potential Impact:**
 
-Unauthorised administrative access.
-Unintended changes to application settings.
-Exposure or modification of sensitive information.
+- Unauthorised administrative access.
+- Unintended changes to application settings.
+- Exposure or modification of sensitive information.
 
 **Recommendations:**
 
-Enforce server-side authorisation checks.
-Apply role-based access control.
-Follow the principle of least privilege.
-Protect administrative functions with appropriate authentication.
-Log and monitor privileged activities.
+- Enforce server-side authorisation checks.
+- Apply role-based access control.
+- Follow the principle of least privilege.
+- Protect administrative functions with appropriate authentication.
+- Log and monitor privileged activities.
 
-**Lab 7: Hidden Admin Functionality**
+### Finding 7: Hidden Administrative Functionality
 
-**Vulnerability: Improper Access Control**
+**Vulnerability:** Improper Access Control
 
 **Description:**
 
@@ -210,21 +229,21 @@ Hiding a sensitive URL does not provide effective security if the application fa
 
 **Potential Impact:**
 
-Unauthorised access to administrative features.
-Exposure of sensitive application functionality.
-Potential misuse of privileged operations.
+- Unauthorised access to administrative features.
+- Exposure of sensitive application functionality.
+- Potential misuse of privileged operations.
 
 **Recommendations:**
 
-Enforce server-side access control on every sensitive route.
-Require appropriate authentication and authorisation.
-Avoid relying on hidden URLs as a security measure.
-Regularly review access permissions.
-Test administrative functionality for access control weaknesses.
+- Enforce server-side access controls on sensitive routes.
+- Require appropriate authentication and authorisation.
+- Avoid relying on hidden URLs as a security measure.
+- Regularly review access permissions.
+- Test administrative functionality for access control weaknesses.
 
-**Lab 8: Username Enumeration**
+### Finding 8: Username Enumeration
 
-Vulnerability: Authentication Information Disclosure
+**Vulnerability:** Authentication Information Disclosure
 
 **Description:**
 
@@ -234,21 +253,21 @@ This may help attackers identify valid accounts.
 
 **Potential Impact:**
 
-Identification of valid user accounts.
-Increased risk of targeted password attacks.
-Greater exposure to credential-based attacks.
+- Identification of valid user accounts.
+- Increased risk of targeted password attacks.
+- Greater exposure to credential-based attacks.
 
 **Recommendations:**
 
-Use consistent authentication error messages.
-Implement rate limiting.
-Monitor repeated authentication failures.
-Apply appropriate account protection measures.
-Use multi-factor authentication.
+- Use consistent authentication error messages.
+- Implement rate limiting.
+- Monitor repeated authentication failures.
+- Apply appropriate account protection measures.
+- Use multi-factor authentication.
 
-**Lab 9: Two-Factor Authentication Bypass**
+### Finding 9: Two-Factor Authentication Bypass
 
-Vulnerability: Authentication Workflow Weakness
+**Vulnerability:** Authentication Workflow Weakness
 
 **Description:**
 
@@ -256,20 +275,21 @@ An authentication process may contain weaknesses if it does not correctly enforc
 
 **Potential Impact:**
 
-Unauthorised account access.
-Reduced effectiveness of MFA.
-Compromise of sensitive account information.
+- Unauthorised account access.
+- Reduced effectiveness of multi-factor authentication.
+- Compromise of sensitive account information.
 
 **Recommendations:**
 
-Enforce MFA verification on the server side.
-Validate every authentication stage.
-Prevent access before all required checks are completed.
-Protect authentication tokens and sessions.
-Monitor suspicious authentication activity.
-Lab 10: File Path Traversal
+- Enforce MFA verification on the server side.
+- Validate every authentication stage.
+- Prevent access before all required checks are completed.
+- Protect authentication tokens and sessions.
+- Monitor suspicious authentication activity.
 
-**Vulnerability: Path Traversal**
+### Finding 10: File Path Traversal
+
+**Vulnerability:** Path Traversal
 
 **Description:**
 
@@ -277,20 +297,21 @@ Path traversal occurs when an application uses user-controlled input to access f
 
 **Potential Impact:**
 
-Exposure of sensitive files.
-Unauthorised access to application resources.
-Disclosure of configuration information.
+- Exposure of sensitive files.
+- Unauthorised access to application resources.
+- Disclosure of configuration information.
 
 **Recommendations:**
 
-Restrict file access to approved directories.
-Use allowlists for permitted files.
-Avoid passing raw user input directly into file system operations.
-Validate and normalise file paths.
-Apply appropriate file system permissions.
-Lab 11: OS Command Injection
+- Restrict file access to approved directories.
+- Use allowlists for permitted files.
+- Avoid passing raw user input directly into file system operations.
+- Validate and normalise file paths.
+- Apply appropriate file system permissions.
 
-**Vulnerability: OS Command Injection**
+### Finding 11: OS Command Injection
+
+**Vulnerability:** OS Command Injection
 
 **Description:**
 
@@ -298,68 +319,89 @@ OS command injection occurs when an application passes untrusted user input into
 
 **Potential Impact:**
 
-Unauthorised command execution.
-Compromise of application server security.
-Exposure or modification of sensitive information.
-Potential disruption of services.
+- Unauthorised command execution.
+- Compromise of application server security.
+- Exposure or modification of sensitive information.
+- Potential disruption of services.
 
 **Recommendations:**
 
-Avoid executing operating system commands when safer alternatives exist.
-Use secure application-level functions.
-Strictly validate any required inputs.
-Apply allowlists for permitted values.
-Run application processes with minimum privileges.
-Monitor suspicious application and server activity.
+- Avoid executing operating system commands when safer alternatives exist.
+- Use secure application-level functions.
+- Strictly validate required inputs.
+- Apply allowlists for permitted values.
+- Run application processes with minimum privileges.
+- Monitor suspicious application and server activity.
 
-**5. Overall Analysis**
+---
 
-The selected vulnerability categories demonstrate several important principles of web application security.
+## 5. Overall Security Analysis
 
-**5.1 User Input Validation**
+The selected labs demonstrate several important principles of web application security.
+
+### 5.1 Secure Input Handling
 
 Applications must treat user input as untrusted. SQL injection, cross-site scripting, path traversal, and command injection demonstrate the risks associated with insecure input processing.
 
-**5.2 Authentication and Authorisation**
+### 5.2 Authentication and Authorisation
 
 Authentication verifies a user's identity, while authorisation determines what that user is permitted to access.
 
-Both must be enforced correctly on the server side.
+Both must be correctly enforced on the server side.
 
-**5.3 Secure Coding Practices**
+### 5.3 Secure Coding Practices
 
-Developers should use secure programming techniques, appropriate input validation, output encoding, parameterised queries, and safe application interfaces.
+Developers should implement secure programming techniques, appropriate input validation, output encoding, parameterised queries, and safe application interfaces.
 
-**5.4 Continuous Security Testing**
+### 5.4 Continuous Security Testing
 
 Regular penetration testing, vulnerability assessments, and secure code reviews can help identify weaknesses before they are exploited.
 
-**5.5 Security Monitoring**
+### 5.5 Security Monitoring
 
 Organisations should monitor application activity, authentication events, and unusual access patterns to identify potential security incidents.
 
-**6. General Security Recommendations**
+---
+
+## 6. General Security Recommendations
 
 Based on the vulnerability categories covered in this exercise, the following security measures are recommended:
 
-Implement secure coding standards.
-Use prepared statements for database queries.
-Apply context-aware output encoding.
-Enforce server-side authentication and authorisation.
-Implement multi-factor authentication.
-Apply least-privilege access controls.
-Validate and restrict file access.
-Avoid unsafe operating system command execution.
-Conduct regular penetration testing.
-Monitor application logs and suspicious activity.
-Provide secure coding training for developers.
-Maintain an effective vulnerability management process.
+1. Implement secure coding standards.
+2. Use prepared statements for database queries.
+3. Apply context-aware output encoding.
+4. Enforce server-side authentication and authorisation.
+5. Implement multi-factor authentication.
+6. Apply least-privilege access controls.
+7. Validate and restrict file access.
+8. Avoid unsafe operating system command execution.
+9. Conduct regular penetration testing.
+10. Monitor application logs and suspicious activity.
+11. Provide secure coding training for developers.
+12. Maintain an effective vulnerability management process.
 
-**7. Conclusion**
+---
 
-This penetration testing training exercise explores common web application vulnerabilities, including SQL injection, cross-site scripting, access control weaknesses, authentication flaws, path traversal, and OS command injection.
+## 7. Skills and Knowledge Developed
 
-These vulnerabilities demonstrate how insecure application design and implementation can expose organisations to unauthorised access, information disclosure, and other security risks.
+This exercise helped develop foundational knowledge in:
+
+- Identifying common web application vulnerabilities.
+- Understanding SQL injection and database security.
+- Recognising reflected, stored, and DOM-based XSS.
+- Understanding authentication and access control weaknesses.
+- Recognising path traversal and command injection risks.
+- Evaluating potential security impacts.
+- Developing practical remediation recommendations.
+- Documenting technical findings in a structured security report.
+
+---
+
+## 8. Conclusion
+
+This penetration testing training exercise explored 11 beginner-level web application security labs covering SQL injection, cross-site scripting, access control weaknesses, authentication flaws, path traversal, and OS command injection.
+
+The exercises demonstrated how insecure application design and implementation can expose organisations to unauthorised access, information disclosure, and other security risks.
 
 The most important security measures include proper input handling, secure authentication, server-side access control, safe database queries, and secure application development practices.
 
@@ -367,29 +409,22 @@ Regular penetration testing and security reviews can help organisations identify
 
 The knowledge gained through this exercise contributes to developing foundational penetration testing skills and a stronger understanding of web application security.
 
-**8. Appendix – Evidence of Lab Completion**
+---
 
-Screenshots should be added as evidence after successfully completing each PortSwigger training lab.
+## 9. Assessment Evidence and References
 
-**Appendix	Lab	Evidence**
-A	SQL Injection – Login Bypass	Screenshot pending
-B	SQL Injection – Hidden Data Exposure	Screenshot pending
-C	Reflected Cross-Site Scripting	Screenshot pending
-D	Stored Cross-Site Scripting	Screenshot pending
-E	DOM-Based Cross-Site Scripting	Screenshot pending
-F	Unprotected Admin Functionality	Screenshot pending
-G	Hidden Admin Functionality	Screenshot pending
-H	Username Enumeration	Screenshot pending
-I	Two-Factor Authentication Bypass	Screenshot pending
-J	File Path Traversal	Screenshot pending
-K	OS Command Injection	Screenshot pending
+**Practical Training Platform:** PortSwigger Web Security Academy
 
-Evidence location: evidence/
+**Training Resource:** https://portswigger.net/web-security
 
-Project: Commonwealth Bank Cybersecurity Virtual Experience
+The practical exercises were completed within the authorised PortSwigger educational environment.
 
-Task: 04 – Penetration Testing
+This report documents the vulnerability concepts explored, their potential security impacts, and recommended remediation measures.
 
-Platform: PortSwigger Web Security Academy
+**Evidence Note:** Screenshots were not captured for this submission.
 
-Report Type: Web Application Penetration Testing Training Report
+**Project:** Commonwealth Bank Cybersecurity Virtual Experience
+
+**Task:** 04 – Penetration Testing
+
+**Report Type:** Web Application Penetration Testing Training Report
